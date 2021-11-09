@@ -1,0 +1,162 @@
+{
+    "B1": {
+        "normal": {
+            "verde": 0.61805,
+            "amarela": 0.63679,
+            "vermelha_1": 0.65776,
+            "vermelha_2": 0.71297,
+            "escassez": 0.76005
+        },
+        "baixa_renda": {
+            "lt_30": {
+                "verde": 0.19203,
+                "amarela": 0.21077,
+                "vermelha_1": 0.23174,
+                "vermelha_2": 0.28695,
+                "escassez": 0.33403
+            },
+            "31-100": {
+                "verde": 0.3292,
+                "amarela": 0.34794,
+                "vermelha_1": 0.36891,
+                "vermelha_2": 0.42412,
+                "escassez": 0.4712
+            },
+            "101-220": {
+                "verde": 0.49381,
+                "amarela": 0.51225,
+                "vermelha_1": 0.53352,
+                "vermelha_2": 0.58873,
+                "escassez": 0.63581
+            },
+            "gt-220": {
+                "verde": 0.54869,
+                "amarela": 0.56743,
+                "vermelha_1": 0.5884,
+                "vermelha_2": 0.64361,
+                "escassez": 0.69069
+            }
+        },
+        "branca": {
+            "ponta": {
+                "verde": 1.17045,
+                "amarela": 1.18919,
+                "vermelha_1": 1.21016,
+                "vermelha_2": 1.26537,
+                "escassez": 1.31245
+            },
+            "intermediario": {
+                "verde": 0.76521,
+                "amarela": 0.78395,
+                "vermelha_1": 0.80492,
+                "vermelha_2": 0.86013,
+                "escassez": 0.90721
+            },
+            "fora_ponta": {
+                "verde": 0.50898,
+                "amarela": 0.52772,
+                "vermelha_1": 0.54869,
+                "vermelha_2": 0.6039,
+                "escassez": 0.65098
+            }
+        }
+    },
+    "B2": {
+        "normal": {
+            "verde": 0.54388,
+            "amarela": 0.56262,
+            "vermelha_1": 0.58359,
+            "vermelha_2": 0.6388,
+            "escassez": 0.68588
+        },
+        "jequitinhonha": [
+            {
+                "verde": 0.146848,
+                "amarela": 0.165588,
+                "vermelha_1": 0.186558,
+                "vermelha_2": 0.241768,
+                "escassez": 0.288848
+            }
+        ],
+        "demais_regioes": [
+            {
+                "verde": 0.17948,
+                "amarela": 0.19822,
+                "vermelha_1": 0.21919,
+                "vermelha_2": 0.2744,
+                "escassez": 0.32148
+            }
+        ],
+        "branca": {
+            "ponta": {
+                "verde": 1.07944,
+                "amarela": 1.09818,
+                "vermelha_1": 1.11915,
+                "vermelha_2": 1.17436,
+                "escassez": 1.22144
+            },
+            "intermediario": {
+                "verde": 0.70305,
+                "amarela": 0.72179,
+                "vermelha_1": 0.74276,
+                "vermelha_2": 0.79797,
+                "escassez": 0.84505
+            },
+            "fora_ponta": {
+                "verde": 0.45779,
+                "amarela": 0.47653,
+                "vermelha_1": 0.4975,
+                "vermelha_2": 0.55271,
+                "escassez": 0.59979
+            }
+        }
+    },
+    "B3": {
+        "normal": {
+            "verde": 0.61805,
+            "amarela": 0.63679,
+            "vermelha_1": 0.65776,
+            "vermelha_2": 0.71297,
+            "escassez": 0.76005
+        },
+        "branca": {
+            "ponta": {
+                "verde": 1.2154,
+                "amarela": 1.23414,
+                "vermelha_1": 1.25511,
+                "vermelha_2": 1.31032,
+                "escassez": 1.3574
+            },
+            "intermediario": {
+                "verde": 0.79218,
+                "amarela": 0.81092,
+                "vermelha_1": 0.83189,
+                "vermelha_2": 0.8871,
+                "escassez": 0.93818
+            },
+            "fora_ponta": {
+                "verde": 0.51797,
+                "amarela": 0.53671,
+                "vermelha_1": 0.55768,
+                "vermelha_2": 0.61289,
+                "escassez": 0.65997
+            }
+        }
+    },
+    "B4": {
+        "B4a": {
+            "verde": 0.33993,
+            "amarela": 0.35867,
+            "vermelha_1": 0.37964,
+            "vermelha_2": 0.43485,
+            "escassez": 0.48193
+        },
+        "B4b": {
+            "verde": 0.37082,
+            "amarela": 0.38956,
+            "vermelha_1": 0.41053,
+            "vermelha_2": 0.46574,
+            "escassez": 0.51282
+        }
+    }
+}
