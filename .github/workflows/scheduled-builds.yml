@@ -2,7 +2,7 @@
 name: Update tariffs on CRON
 
 on:
-  - workflow_dispatch
+  workflow_dispatch:
   schedule:
     - cron: '25 * * * *'
 
