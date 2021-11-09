@@ -69,24 +69,20 @@
             "vermelha_2": 0.6388,
             "escassez": 0.68588
         },
-        "jequitinhonha": [
-            {
-                "verde": 0.146848,
-                "amarela": 0.165588,
-                "vermelha_1": 0.186558,
-                "vermelha_2": 0.241768,
-                "escassez": 0.288848
-            }
-        ],
-        "demais_regioes": [
-            {
-                "verde": 0.17948,
-                "amarela": 0.19822,
-                "vermelha_1": 0.21919,
-                "vermelha_2": 0.2744,
-                "escassez": 0.32148
-            }
-        ],
+        "jequitinhonha": {
+            "verde": 0.146848,
+            "amarela": 0.165588,
+            "vermelha_1": 0.186558,
+            "vermelha_2": 0.241768,
+            "escassez": 0.288848
+        },
+        "demais_regioes": {
+            "verde": 0.17948,
+            "amarela": 0.19822,
+            "vermelha_1": 0.21919,
+            "vermelha_2": 0.2744,
+            "escassez": 0.32148
+        },
         "branca": {
             "ponta": {
                 "verde": 1.07944,
