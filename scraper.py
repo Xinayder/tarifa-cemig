@@ -248,4 +248,7 @@ def get_tarifas():
     get_tarifa_branca(results[5])
 
 get_tarifas()
-print(tarifas)
+
+import json
+with open('tariffs.json', 'w', encoding='utf-8') as f:
+    json.dump(tarifas, f, ensure_ascii=False, indent=4)
