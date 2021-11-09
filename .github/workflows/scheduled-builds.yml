@@ -3,7 +3,7 @@ name: Update tariffs on CRON
 
 on:
   schedule:
-    - cron: '0 * * * *'
+    - cron: '25 * * * *'
 
 jobs:
   run:
