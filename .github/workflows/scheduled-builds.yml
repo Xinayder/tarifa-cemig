@@ -9,6 +9,7 @@ on:
 jobs:
   run:
     runs-on: ubuntu-latest
+    shell: bash
 
     steps:
     - uses: actions/checkout@v2
@@ -34,7 +35,7 @@ jobs:
         if [-z "$(git status --porcelain)"]; then
            echo "::set-output name=push::false"
         else
-           git commit -m "Update tariffs ${date +"%Y-%m-%d %T"}" -a
+           git commit -m "Update tariffs `date +"%Y-%m-%d %T"` -a
            echo "::set-output name=push::true"
         fi
     - name: Push changes
