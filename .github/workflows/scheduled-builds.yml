@@ -7,9 +7,11 @@ on:
     - cron: '25 * * * *'
 
 jobs:
-  run:
+  deploy:
     runs-on: ubuntu-latest
-    shell: bash
+    defaults:
+      run:
+        shell: bash
 
     steps:
     - uses: actions/checkout@v2
