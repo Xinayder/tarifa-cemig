@@ -2,12 +2,13 @@
 name: Update tariffs on CRON
 
 on:
+  - workflow_dispatch
   schedule:
     - cron: '25 * * * *'
 
 jobs:
   run:
-    runs-on: linux-latest
+    runs-on: ubuntu-latest
 
     steps:
     - uses: actions/checkout@v2
