@@ -4,7 +4,7 @@ name: Update tariffs on CRON
 on:
   workflow_dispatch:
   schedule:
-    - cron: '14 * * * *'
+    - cron: '08 * * * *'
 
 jobs:
   deploy:
@@ -34,7 +34,7 @@ jobs:
         git config --local user.email "action@github.com"
         git config --local user.name "github-actions"
         git add --all
-        if [-z "$(git status --porcelain)"]; then
+        if [ -z "$(git status --porcelain)" ]; then
            echo "::set-output name=push::false"
         else
            git commit -m "Update tariffs `date +"%Y-%m-%d %T"`" -a
