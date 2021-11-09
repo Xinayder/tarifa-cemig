@@ -106,7 +106,7 @@ def get_tarifa_b2_rur(tbl):
         'vermelha_1': float(valores[9].text.strip().replace(',', '.').encode('ascii', 'ignore').decode()),
         'vermelha_2': float(valores[10].text.strip().replace(',', '.').encode('ascii', 'ignore').decode()),
         'escassez': float(valores[11].text.strip().replace(',', '.').encode('ascii', 'ignore').decode()),
-    },
+    }
 
     tarifas['B2']['demais_regioes'] = {
         'verde': float(valores[13].text.strip().replace(',', '.').encode('ascii', 'ignore').decode()),
@@ -114,7 +114,7 @@ def get_tarifa_b2_rur(tbl):
         'vermelha_1': float(valores[15].text.strip().replace(',', '.').encode('ascii', 'ignore').decode()),
         'vermelha_2': float(valores[16].text.strip().replace(',', '.').encode('ascii', 'ignore').decode()),
         'escassez': float(valores[17].text.strip().replace(',', '.').encode('ascii', 'ignore').decode()),
-    },
+    }
 
 def get_tarifa_b3(tbl):
     tbody = tbl.find("tbody")
