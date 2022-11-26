@@ -53,68 +53,41 @@ def get_tarifa_b1_res_br(tbl):
     tbody = tbl.find("tbody")
     valores = tbody.find_all("td")
 
+    tipos = ['lt_30', '31-100', '101-220', 'gt-220']
+
     print('Obtendo tarifas B1 Residencial Baixa Renda...')
 
-    tarifas['B1']['baixa_renda'] = {
-        'lt_30': {
-            'verde': float(valores[1].text.strip().replace(',', '.').encode('ascii', 'ignore').decode()),
-            'amarela': float(valores[2].text.strip().replace(',', '.').encode('ascii', 'ignore').decode()),
-            'vermelha_1': float(valores[3].text.strip().replace(',', '.').encode('ascii', 'ignore').decode()),
-            'vermelha_2': float(valores[4].text.strip().replace(',', '.').encode('ascii', 'ignore').decode()),
-            'escassez': float(valores[5].text.strip().replace(',', '.').encode('ascii', 'ignore').decode()),
-        },
-        '31-100': {
-            'verde': float(valores[7].text.strip().replace(',', '.').encode('ascii', 'ignore').decode()),
-            'amarela': float(valores[8].text.strip().replace(',', '.').encode('ascii', 'ignore').decode()),
-            'vermelha_1': float(valores[9].text.strip().replace(',', '.').encode('ascii', 'ignore').decode()),
-            'vermelha_2': float(valores[10].text.strip().replace(',', '.').encode('ascii', 'ignore').decode()),
-            'escassez': float(valores[11].text.strip().replace(',', '.').encode('ascii', 'ignore').decode()),
-        },
-        '101-220': {
-            'verde': float(valores[13].text.strip().replace(',', '.').encode('ascii', 'ignore').decode()),
-            'amarela': float(valores[14].text.strip().replace(',', '.').encode('ascii', 'ignore').decode()),
-            'vermelha_1': float(valores[15].text.strip().replace(',', '.').encode('ascii', 'ignore').decode()),
-            'vermelha_2': float(valores[16].text.strip().replace(',', '.').encode('ascii', 'ignore').decode()),
-            'escassez': float(valores[17].text.strip().replace(',', '.').encode('ascii', 'ignore').decode()),
-        },
-        'gt-220': {
-            'verde': float(valores[19].text.strip().replace(',', '.').encode('ascii', 'ignore').decode()),
-            'amarela': float(valores[20].text.strip().replace(',', '.').encode('ascii', 'ignore').decode()),
-            'vermelha_1': float(valores[21].text.strip().replace(',', '.').encode('ascii', 'ignore').decode()),
-            'vermelha_2': float(valores[22].text.strip().replace(',', '.').encode('ascii', 'ignore').decode()),
-            'escassez': float(valores[23].text.strip().replace(',', '.').encode('ascii', 'ignore').decode()),
+    offset = 0
+    for tipo in tipos:
+        tarifas['B1']['baixa_renda'][tipo] = {
+            'verde': float(valores[1 + offset].text.strip().replace(',', '.').encode('ascii', 'ignore').decode()),
+            'amarela': float(valores[2 + offset].text.strip().replace(',', '.').encode('ascii', 'ignore').decode()),
+            'vermelha_1': float(valores[3 + offset].text.strip().replace(',', '.').encode('ascii', 'ignore').decode()),
+            'vermelha_2': float(valores[4 + offset].text.strip().replace(',', '.').encode('ascii', 'ignore').decode()),
+            'escassez': float(valores[5 + offset].text.strip().replace(',', '.').encode('ascii', 'ignore').decode()),
         }
-    }
+
+        offset += 6
 
 def get_tarifa_b2_rur(tbl):
     tbody = tbl.find("tbody")
     valores = tbody.find_all("td")
 
-    print('Obtendo tarifas B2 Rural...')
-    
-    tarifas['B2']['normal'] = {
-        'verde': float(valores[1].text.strip().replace(',', '.').encode('ascii', 'ignore').decode()),
-        'amarela': float(valores[2].text.strip().replace(',', '.').encode('ascii', 'ignore').decode()),
-        'vermelha_1': float(valores[3].text.strip().replace(',', '.').encode('ascii', 'ignore').decode()),
-        'vermelha_2': float(valores[4].text.strip().replace(',', '.').encode('ascii', 'ignore').decode()),
-        'escassez': float(valores[5].text.strip().replace(',', '.').encode('ascii', 'ignore').decode()),
-    }
-    
-    tarifas['B2']['jequitinhonha'] = {
-        'verde': float(valores[7].text.strip().replace(',', '.').encode('ascii', 'ignore').decode()),
-        'amarela': float(valores[8].text.strip().replace(',', '.').encode('ascii', 'ignore').decode()),
-        'vermelha_1': float(valores[9].text.strip().replace(',', '.').encode('ascii', 'ignore').decode()),
-        'vermelha_2': float(valores[10].text.strip().replace(',', '.').encode('ascii', 'ignore').decode()),
-        'escassez': float(valores[11].text.strip().replace(',', '.').encode('ascii', 'ignore').decode()),
-    }
+    tipos = ['normal', 'jequitinhonha', 'demais_regioes']
 
-    tarifas['B2']['demais_regioes'] = {
-        'verde': float(valores[13].text.strip().replace(',', '.').encode('ascii', 'ignore').decode()),
-        'amarela': float(valores[14].text.strip().replace(',', '.').encode('ascii', 'ignore').decode()),
-        'vermelha_1': float(valores[15].text.strip().replace(',', '.').encode('ascii', 'ignore').decode()),
-        'vermelha_2': float(valores[16].text.strip().replace(',', '.').encode('ascii', 'ignore').decode()),
-        'escassez': float(valores[17].text.strip().replace(',', '.').encode('ascii', 'ignore').decode()),
-    }
+    print('Obtendo tarifas B2 Rural...')
+
+    offset = 0
+    for tipo in tipos:
+        tarifas['B2'][tipo] = {
+            'verde': float(valores[1 + offset].text.strip().replace(',', '.').encode('ascii', 'ignore').decode()),
+            'amarela': float(valores[2 + offset].text.strip().replace(',', '.').encode('ascii', 'ignore').decode()),
+            'vermelha_1': float(valores[3 + offset].text.strip().replace(',', '.').encode('ascii', 'ignore').decode()),
+            'vermelha_2': float(valores[4 + offset].text.strip().replace(',', '.').encode('ascii', 'ignore').decode()),
+            'escassez': float(valores[5 + offset].text.strip().replace(',', '.').encode('ascii', 'ignore').decode()),
+        }
+
+        offset += 6
 
 def get_tarifa_b3(tbl):
     tbody = tbl.find("tbody")
@@ -134,110 +107,42 @@ def get_tarifa_b4(tbl):
     tbody = tbl.find("tbody")
     valores = tbody.find_all("td")
 
-    print('Obtendo tarifas B4 Iluminacao Publica...')
-    
-    tarifas['B4']['B4a'] = {
-        'verde': float(valores[1].text.strip().replace(',', '.').encode('ascii', 'ignore').decode()),
-        'amarela': float(valores[2].text.strip().replace(',', '.').encode('ascii', 'ignore').decode()),
-        'vermelha_1': float(valores[3].text.strip().replace(',', '.').encode('ascii', 'ignore').decode()),
-        'vermelha_2': float(valores[4].text.strip().replace(',', '.').encode('ascii', 'ignore').decode()),
-        'escassez': float(valores[5].text.strip().replace(',', '.').encode('ascii', 'ignore').decode()),
-    }
+    tipos = ['B4a', 'B4b']
 
-    tarifas['B4']['B4b'] = {
-        'verde': float(valores[7].text.strip().replace(',', '.').encode('ascii', 'ignore').decode()),
-        'amarela': float(valores[8].text.strip().replace(',', '.').encode('ascii', 'ignore').decode()),
-        'vermelha_1': float(valores[9].text.strip().replace(',', '.').encode('ascii', 'ignore').decode()),
-        'vermelha_2': float(valores[10].text.strip().replace(',', '.').encode('ascii', 'ignore').decode()),
-        'escassez': float(valores[11].text.strip().replace(',', '.').encode('ascii', 'ignore').decode()),
-    }
+    print('Obtendo tarifas B4 Iluminacao Publica...')
+
+    offset = 0
+    for tipo in tipos:
+        tarifas['B4'][tipo] = {
+            'verde': float(valores[1 + offset].text.strip().replace(',', '.').encode('ascii', 'ignore').decode()),
+            'amarela': float(valores[2 + offset].text.strip().replace(',', '.').encode('ascii', 'ignore').decode()),
+            'vermelha_1': float(valores[3 + offset].text.strip().replace(',', '.').encode('ascii', 'ignore').decode()),
+            'vermelha_2': float(valores[4 + offset].text.strip().replace(',', '.').encode('ascii', 'ignore').decode()),
+            'escassez': float(valores[5 + offset].text.strip().replace(',', '.').encode('ascii', 'ignore').decode()),
+        }
+
+        offset += 6
 
 def get_tarifa_branca(tbl):
     tbody = tbl.find("tbody")
     valores = tbody.find_all("td")
 
+    classes = ['B1', 'B2', 'B3']
+    tipos = ['ponta', 'intermediario', 'fora_ponta']
+
     print('Obtendo tarifas Tarifa Branca...')
 
     offset = 0
-    tarifas['B1']['branca']['ponta'] = {
-        'verde': float(valores[1 + offset].text.strip().replace(',', '.').encode('ascii', 'ignore').decode()),
-        'amarela': float(valores[2 + offset].text.strip().replace(',', '.').encode('ascii', 'ignore').decode()),
-        'vermelha_1': float(valores[3 + offset].text.strip().replace(',', '.').encode('ascii', 'ignore').decode()),
-        'vermelha_2': float(valores[4 + offset].text.strip().replace(',', '.').encode('ascii', 'ignore').decode()),
-        'escassez': float(valores[5 + offset].text.strip().replace(',', '.').encode('ascii', 'ignore').decode()),
-    }
-
-    offset = 6
-    tarifas['B1']['branca']['intermediario'] = {
-        'verde': float(valores[1 + offset].text.strip().replace(',', '.').encode('ascii', 'ignore').decode()),
-        'amarela': float(valores[2 + offset].text.strip().replace(',', '.').encode('ascii', 'ignore').decode()),
-        'vermelha_1': float(valores[3 + offset].text.strip().replace(',', '.').encode('ascii', 'ignore').decode()),
-        'vermelha_2': float(valores[4 + offset].text.strip().replace(',', '.').encode('ascii', 'ignore').decode()),
-        'escassez': float(valores[5 + offset].text.strip().replace(',', '.').encode('ascii', 'ignore').decode()),
-    }
-
-    offset = 12
-    tarifas['B1']['branca']['fora_ponta'] = {
-        'verde': float(valores[1 + offset].text.strip().replace(',', '.').encode('ascii', 'ignore').decode()),
-        'amarela': float(valores[2 + offset].text.strip().replace(',', '.').encode('ascii', 'ignore').decode()),
-        'vermelha_1': float(valores[3 + offset].text.strip().replace(',', '.').encode('ascii', 'ignore').decode()),
-        'vermelha_2': float(valores[4 + offset].text.strip().replace(',', '.').encode('ascii', 'ignore').decode()),
-        'escassez': float(valores[5 + offset].text.strip().replace(',', '.').encode('ascii', 'ignore').decode()),
-    }
-
-    offset = 18
-    tarifas['B2']['branca']['ponta'] = {
-        'verde': float(valores[1 + offset].text.strip().replace(',', '.').encode('ascii', 'ignore').decode()),
-        'amarela': float(valores[2 + offset].text.strip().replace(',', '.').encode('ascii', 'ignore').decode()),
-        'vermelha_1': float(valores[3 + offset].text.strip().replace(',', '.').encode('ascii', 'ignore').decode()),
-        'vermelha_2': float(valores[4 + offset].text.strip().replace(',', '.').encode('ascii', 'ignore').decode()),
-        'escassez': float(valores[5 + offset].text.strip().replace(',', '.').encode('ascii', 'ignore').decode()),
-    }
-
-    offset = 24
-    tarifas['B2']['branca']['intermediario'] = {
-        'verde': float(valores[1 + offset].text.strip().replace(',', '.').encode('ascii', 'ignore').decode()),
-        'amarela': float(valores[2 + offset].text.strip().replace(',', '.').encode('ascii', 'ignore').decode()),
-        'vermelha_1': float(valores[3 + offset].text.strip().replace(',', '.').encode('ascii', 'ignore').decode()),
-        'vermelha_2': float(valores[4 + offset].text.strip().replace(',', '.').encode('ascii', 'ignore').decode()),
-        'escassez': float(valores[5 + offset].text.strip().replace(',', '.').encode('ascii', 'ignore').decode()),
-    }
-
-    offset = 30
-    tarifas['B2']['branca']['fora_ponta'] = {
-        'verde': float(valores[1 + offset].text.strip().replace(',', '.').encode('ascii', 'ignore').decode()),
-        'amarela': float(valores[2 + offset].text.strip().replace(',', '.').encode('ascii', 'ignore').decode()),
-        'vermelha_1': float(valores[3 + offset].text.strip().replace(',', '.').encode('ascii', 'ignore').decode()),
-        'vermelha_2': float(valores[4 + offset].text.strip().replace(',', '.').encode('ascii', 'ignore').decode()),
-        'escassez': float(valores[5 + offset].text.strip().replace(',', '.').encode('ascii', 'ignore').decode()),
-    }
-
-    offset = 36
-    tarifas['B3']['branca']['ponta'] = {
-        'verde': float(valores[1 + offset].text.strip().replace(',', '.').encode('ascii', 'ignore').decode()),
-        'amarela': float(valores[2 + offset].text.strip().replace(',', '.').encode('ascii', 'ignore').decode()),
-        'vermelha_1': float(valores[3 + offset].text.strip().replace(',', '.').encode('ascii', 'ignore').decode()),
-        'vermelha_2': float(valores[4 + offset].text.strip().replace(',', '.').encode('ascii', 'ignore').decode()),
-        'escassez': float(valores[5 + offset].text.strip().replace(',', '.').encode('ascii', 'ignore').decode()),
-    }
-
-    offset = 42
-    tarifas['B3']['branca']['intermediario'] = {
-        'verde': float(valores[1 + offset].text.strip().replace(',', '.').encode('ascii', 'ignore').decode()),
-        'amarela': float(valores[2 + offset].text.strip().replace(',', '.').encode('ascii', 'ignore').decode()),
-        'vermelha_1': float(valores[3 + offset].text.strip().replace(',', '.').encode('ascii', 'ignore').decode()),
-        'vermelha_2': float(valores[4 + offset].text.strip().replace(',', '.').encode('ascii', 'ignore').decode()),
-        'escassez': float(valores[5 + offset].text.strip().replace(',', '.').encode('ascii', 'ignore').decode()),
-    }
-
-    offset = 48
-    tarifas['B3']['branca']['fora_ponta'] = {
-        'verde': float(valores[1 + offset].text.strip().replace(',', '.').encode('ascii', 'ignore').decode()),
-        'amarela': float(valores[2 + offset].text.strip().replace(',', '.').encode('ascii', 'ignore').decode()),
-        'vermelha_1': float(valores[3 + offset].text.strip().replace(',', '.').encode('ascii', 'ignore').decode()),
-        'vermelha_2': float(valores[4 + offset].text.strip().replace(',', '.').encode('ascii', 'ignore').decode()),
-        'escassez': float(valores[5 + offset].text.strip().replace(',', '.').encode('ascii', 'ignore').decode()),
-    }
+    for classe in classes:
+        for tipo in tipos:
+            tarifas[classe]['branca'][tipo] = {
+                'verde': float(valores[1 + offset].text.strip().replace(',', '.').encode('ascii', 'ignore').decode()),
+                'amarela': float(valores[2 + offset].text.strip().replace(',', '.').encode('ascii', 'ignore').decode()),
+                'vermelha_1': float(valores[3 + offset].text.strip().replace(',', '.').encode('ascii', 'ignore').decode()),
+                'vermelha_2': float(valores[4 + offset].text.strip().replace(',', '.').encode('ascii', 'ignore').decode()),
+                'escassez': float(valores[5 + offset].text.strip().replace(',', '.').encode('ascii', 'ignore').decode()),
+            }
+            offset += 6
 
 def get_tarifas():
     get_tarifa_b1_normal(results[0])
