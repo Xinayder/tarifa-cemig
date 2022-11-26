@@ -27,7 +27,37 @@ tarifas = {
     'B4': {
         'B4a': {},
         'B4b': {},
-    }
+    },
+    'A2': {
+        'ponta': {},
+        'fora_ponta': {},
+        'ultrap_ponta': {},
+        'ultrap_fora_ponta': {},
+    },
+    'A3': {
+        'ponta': {},
+        'fora_ponta': {},
+        'ultrap_ponta': {},
+        'ultrap_fora_ponta': {},
+    },
+    'A3A': {
+        'ponta': {},
+        'fora_ponta': {},
+        'ultrap_ponta': {},
+        'ultrap_fora_ponta': {},
+    },
+    'A4': {
+        'ponta': {},
+        'fora_ponta': {},
+        'ultrap_ponta': {},
+        'ultrap_fora_ponta': {},
+    },
+    'AS': {
+        'ponta': {},
+        'fora_ponta': {},
+        'ultrap_ponta': {},
+        'ultrap_fora_ponta': {},
+    },
 }
 
 page = requests.get(URL_TARIFAS, headers=headers)
@@ -144,6 +174,29 @@ def get_tarifa_branca(tbl):
             }
             offset += 6
 
+def get_tarifa_azul(classe, tbl):
+    tbody = tbl.find("tbody")
+    valores = tbody.find_all("td")
+
+    print(f'Obtendo tarifas Tarifa {classe}...')
+
+    offset = 0
+    for tipo in tarifas[classe].keys():
+        tarifas[classe][tipo] |= {
+            'demanda': float(valores[1 + offset].text.strip().replace(',', '.').encode('ascii', 'ignore').decode())
+        }
+
+        if tipo == 'ponta' or tipo == 'fora_ponta':
+            tarifas[classe][tipo] |= {
+                'verde': float(valores[30 + offset].text.strip().replace(',', '.').encode('ascii', 'ignore').decode()),
+                'amarela': float(valores[31 + offset].text.strip().replace(',', '.').encode('ascii', 'ignore').decode()),
+                'vermelha_1': float(valores[32 + offset].text.strip().replace(',', '.').encode('ascii', 'ignore').decode()),
+                'vermelha_2': float(valores[33 + offset].text.strip().replace(',', '.').encode('ascii', 'ignore').decode()),
+                'escassez': float(valores[34 + offset].text.strip().replace(',', '.').encode('ascii', 'ignore').decode()),
+            }
+
+        offset += 7
+
 def get_tarifas():
     get_tarifa_b1_normal(results[0])
     get_tarifa_b1_res_br(results[1])
@@ -151,6 +204,10 @@ def get_tarifas():
     get_tarifa_b3(results[3])
     get_tarifa_b4(results[4])
     get_tarifa_branca(results[5])
+
+    azuis = ['A2', 'A3', 'A3A', 'A4', 'AS']
+    for i in range(len(azuis)):
+        get_tarifa_azul(azuis[i], results[6 + i])
 
 get_tarifas()
 
